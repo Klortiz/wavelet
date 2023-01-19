@@ -3,6 +3,7 @@ import java.net.URI;
 
 class Handler implements URLHandler {
     String[] words;
+    int count = -1;
     int num = 0;
 
     public String handleRequest(URI url) {
@@ -18,6 +19,13 @@ class Handler implements URLHandler {
                 if (parameters[0].equals("count")) {
                     num += Integer.parseInt(parameters[1]);
                     return String.format("Number increased by %s! It's now %d", parameters[1], num);
+                }
+            }
+            else if(url.getPath().contains("/add")) {
+                String[] parameters = url.getQuery().split("=");
+                if(parameters[0].equals("word")) {
+                    words[0] = parameters[1];
+                    return String.format("Your word is: %s", parameters[1], words);
                 }
             }
             return "404 Not Found!";
