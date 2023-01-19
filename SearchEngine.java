@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.net.URI;
 
 class Handler implements URLHandler {
-    String[] words = null;
+    String[] words;
     int num = 0;
 
     public String handleRequest(URI url) {
